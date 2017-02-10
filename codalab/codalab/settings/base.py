@@ -410,7 +410,8 @@ class DevBase(Base):
     }
     EXTRA_MIDDLEWARE_CLASSES = (
         # 'debug_toolbar.middleware.DebugToolbarMiddleware',
-        'userswitch.middleware.UserSwitchMiddleware',)
+        #'userswitch.middleware.UserSwitchMiddleware',
+    )
     DEBUG_TOOLBAR_CONFIG = {
         'SHOW_TEMPLATE_CONTEXT': True,
         'ENABLE_STACKTRACES' : True,
