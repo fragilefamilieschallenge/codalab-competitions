@@ -66,7 +66,7 @@ class CompetitionCreationSasApi(views.APIView):
         return Response(response_data, status=status.HTTP_201_CREATED)
 
 
-@permission_classes((permissions.IsAuthenticated,))
+@permission_classes((permissions.IsAdminUser,))
 class CompetitionCreationApi(views.APIView):
     """
     Provides a web API to continue the process of creating a competition.
