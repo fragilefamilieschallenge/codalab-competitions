@@ -51,7 +51,7 @@ def _generate_blob_sas_url(prefix, extension):
     return {'url': url, 'id': blob_name, 'version': PREFERRED_STORAGE_X_MS_VERSION}
 
 
-@permission_classes((permissions.IsAuthenticated,))
+@permission_classes((permissions.IsAdminUser,))
 class CompetitionCreationSasApi(views.APIView):
     """
     Provides a web API to start the process of creating a competition.
