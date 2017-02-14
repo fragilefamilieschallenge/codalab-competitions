@@ -10,7 +10,7 @@ import zipfile
 
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.contrib.auth.decorators import login_required, staff_member_required
+from django.contrib.auth.decorators import login_required
 from django.contrib.sites.models import Site
 from django.core.cache import cache
 from django.core.exceptions import ImproperlyConfigured
@@ -95,12 +95,6 @@ class LoginRequiredMixin(object):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
-
-
-class StaffMemberRequiredMixin(object):
-    @method_decorator(staff_member_required)
-    def dispatch(self, *args, **kwargs):
-        return super(StaffMemberRequiredMixin, self).dispatch(*args, **kwargs)
 
 
 class UserSettingsView(LoginRequiredMixin, UpdateView):
@@ -209,7 +203,7 @@ class LeaderboardInline(InlineFormSet):
     extra = 0
 
 
-class CompetitionUpload(StaffMemberRequiredMixin, CreateView):
+class CompetitionUpload(LoginRequiredMixin, CreateView):
     model = models.CompetitionDefBundle
     template_name = 'web/competitions/upload_competition.html'
 
